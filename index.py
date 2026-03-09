@@ -7,9 +7,9 @@ from pages import currency, password, weather, youtube
 path = str(Path(__file__).relative_to(Path.cwd()))
 page = Page(
     path=path,
-    title='Streamlit Examples',
+    title='IT Step Workshop Examples',
     icon='🐍',
-    desc='Stramlit Examples created for Workshop',
+    desc='Streamlit Examples created for Workshop',
 )
 
 
