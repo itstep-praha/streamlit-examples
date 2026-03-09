@@ -1,6 +1,10 @@
 import streamlit as st
-from nav import PAGES
+import index
+from pages import currency, password, weather, youtube
 
 
-nav = st.navigation([p.get_st_page() for p in PAGES])
+pages = [index, currency, password, weather, youtube]
+pages = [item.page.get_nav_item() for item in pages]
+
+nav = st.navigation(pages)
 nav.run()

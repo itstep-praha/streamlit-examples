@@ -1,28 +1,31 @@
+from pathlib import Path
 import streamlit as st
-from nav import PAGES
+from page import Page
+from pages import currency, password, weather, youtube
 
 
-st.title('🐍 Stramlit Examples')
-st.write("Stramlit Examples created for Workshop")
-st.write("")
-st.write("")
+path = str(Path(__file__).relative_to(Path.cwd()))
+page = Page(
+    path=path,
+    title='Streamlit Examples',
+    icon='🐍',
+    desc='Stramlit Examples created for Workshop',
+)
 
 
-def create_card(title, description, icon, page_path):
-    with st.container(border=True):
-        st.subheader(f"{icon} {title}")
-        st.write(description)
-        if st.button(f"Otevřít {title}", key=page_path):
-            st.switch_page(page_path)
+def render_menu():
+    cols_per_row = 2
+    cols = st.columns(cols_per_row)
+    pages = [currency, password, weather, youtube]
+
+    for index, item in enumerate(pages):
+        with cols[index % cols_per_row]:
+            item.page.render_container()
 
 
-cols_per_row = 2
-cols = st.columns(cols_per_row)
-page_enum = enumerate(p for p in PAGES if not p.is_index)
+if __name__ == '__main__':
+    page.render()
+    render_menu()
 
-for index, page in page_enum:
-    with cols[index % cols_per_row]:
-        with st.container(border=True):
-            st.markdown(f"### {page.icon} {page.title}")
-            if st.button(f"Otevřít {page.title}", key=page.path, use_container_width=True):
-                st.switch_page(page.path)
+
+
