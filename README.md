@@ -1,5 +1,7 @@
 # Streamlit Examples
-- Simple web apps with Streamlit framework
+
+Simple web apps with Streamlit framework. Each example is a Python file in pages folder. Students should implement `main()` function.
+
 
 ![Streamlit Examples Screenshot](screen.png)
 
