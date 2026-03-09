@@ -12,7 +12,7 @@ page = Page(
 )
 
 
-# Example URLs
+# Příklady URLs
 url1 = 'https://www.youtube.com/watch?v=hJ-adQhERuE'
 url2 = 'https://www.youtube.com/watch?v=D3gHOXg4_Xo'
 url3 = 'https://www.youtube.com/watch?v=NcsaZg-j3pI'

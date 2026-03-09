@@ -13,14 +13,14 @@ page = Page(
 
 
 def main():
-    # settings
+    # nastavení
     length = st.slider("Délka", 8, 32, 16)
     symbols = string.ascii_letters + string.digits + "!@#$%^&*"
 
-    # new password
+    # generování nového hesla
     password = "".join(random.choice(symbols) for _ in range(length))
 
-    # render as code element
+    # vykreslení
     st.code(password, language='text')
     if st.button("Generovat heslo", use_container_width=True):
         st.rerun()
