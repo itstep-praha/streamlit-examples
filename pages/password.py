@@ -21,8 +21,8 @@ def main():
     password = "".join(random.choice(symbols) for _ in range(length))
 
     # render as code element
-    st.code(password)
-    if st.button("Generate new"):
+    st.code(password, language='text')
+    if st.button("Generovat heslo", use_container_width=True):
         st.rerun()
 
 

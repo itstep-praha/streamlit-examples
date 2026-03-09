@@ -21,7 +21,12 @@ url3 = 'https://www.youtube.com/watch?v=NcsaZg-j3pI'
 def main():
     from pytubefix import YouTube
 
-    url = st.text_input("Youtube URL:", placeholder='Enter Youtube video URL', value=url1)
+    with st.expander("Zobrazit příklady URL"):
+        st.write("Kliknutím zkopírujete:")
+        for item in [url1, url2, url3]:
+            st.code(item, language='text')
+
+    url = st.text_input("Youtube URL:", placeholder='Zadejte Youtube video URL')
     submit = st.button("Zpracovat video", use_container_width=True)
 
     if submit and url:
@@ -49,7 +54,7 @@ def main():
             st.error(f"Chyba: {e}")
 
     elif submit and not url:
-        st.warning("Prosím, vlož nejdříve URL adresu.")
+        st.warning("Vložte prosím URL adresu.")
 
 
 if __name__ == '__main__':

@@ -25,10 +25,10 @@ def main():
                 # Předpověď
                 data = requests.get("https://api.open-meteo.com/v1/forecast", params={"latitude": res["latitude"], "longitude": res["longitude"], "current_weather": True}).json()
                 
-                cw = data["current_weather"]
+                weather = data["current_weather"]
                 
-                st.metric(res["name"], f"{cw['temperature']} °C")
-                st.write(f"Vítr: {cw['windspeed']} km/h")
+                st.metric(res["name"], f"{weather['temperature']} °C")
+                st.write(f"Vítr: {weather['windspeed']} km/h")
             else:
                 st.error("Nenalezeno")
 

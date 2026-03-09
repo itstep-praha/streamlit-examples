@@ -20,8 +20,8 @@ def main():
 
     # Výpočet
     if st.button("Převést", use_container_width=True):
-        url = "https://api.frankfurter.app/latest"
-        with st.spinner("Aktualizuji kurzy..."):
+        with st.spinner():
+            url = "https://api.frankfurter.app/latest"
             data = requests.get(url, params={"from": base, "to": target}).json()
             rate = data["rates"][target]
             result = amount * rate
