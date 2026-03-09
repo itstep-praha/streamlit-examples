@@ -1,7 +1,7 @@
 # Streamlit Examples
 - Simple web apps with Streamlit framework
 
-![Streamlit Examples Screenshot](screen.png)
+![Streamlit Examples Screenshot](screenshot.png)
 
 ## ⚙️ Instalation instructions
 Clone repository:
