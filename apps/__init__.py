@@ -12,8 +12,8 @@ else:
 
 
 app_list = (
-    currency,
     password,
+    currency,
     weather,
     youtube,
 )

@@ -1,5 +1,5 @@
+import streamlit as st
 from pathlib import Path
-import requests, streamlit as st
 from utils.page import Page
 
 
@@ -13,19 +13,22 @@ page = Page(
 
 
 def main():
-    # Vstupy
-    amount = st.number_input("Částka", value=1.0)
-    base = st.selectbox("Z měny", ["EUR", "USD", "CZK", "GBP"])
-    target = st.selectbox("Do měny", ["CZK", "EUR", "USD", "GBP"])
+    from utils.func import get_rate
 
-    # Výpočet
-    if st.button("Převést", use_container_width=True):
+    # Vstupy
+    amount = st.number_input("Částka", value=1.0, min_value=0.0)
+    from_currency = st.selectbox("Z měny", ["EUR", "USD", "CZK", "GBP"])
+    to_currency = st.selectbox("Do měny", ["CZK", "EUR", "USD", "GBP"])
+    button = st.button("Převést", use_container_width=True)
+    
+    if button:
         with st.spinner():
-            url = "https://api.frankfurter.app/latest"
-            data = requests.get(url, params={"from": base, "to": target}).json()
-            rate = data["rates"][target]
+            # Výpočet
+            rate = get_rate(from_currency, to_currency)
             result = amount * rate
-            st.success(f"{amount} {base} = {result:.2f} {target}")
+
+            # Zobrazení výsledku
+            st.success(f"{amount} {from_currency} = {result:.2f} {to_currency}")
 
 
 if __name__ == '__main__':

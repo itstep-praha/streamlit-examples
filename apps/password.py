@@ -1,5 +1,5 @@
+import streamlit as st
 from pathlib import Path
-import random, string, streamlit as st
 from utils.page import Page
 
 
@@ -13,7 +13,7 @@ page = Page(
 
 
 def main():
-    pass
+    from utils.func import generate_password
 
 
 if __name__ == '__main__':

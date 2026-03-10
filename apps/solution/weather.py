@@ -1,5 +1,5 @@
+import streamlit as st
 from pathlib import Path
-import requests, streamlit as st
 from utils.page import Page
 
 
@@ -13,21 +13,25 @@ page = Page(
 
 
 def main():
-    city = st.text_input("Město:", value="Praha")
+    from utils.func import get_weather
 
-    if st.button("Zjistit", use_container_width=True):
+    # Vstup a tlačítko
+    city = st.text_input("Město:", value="Praha")
+    button = st.button("Zjistit", use_container_width=True)
+
+    # Kontrola zadání města
+    if not city.strip():
+        st.error('Zadejte město')
+        st.stop()
+
+    if button:
         with st.spinner():
-            # Geocoding
-            geo = requests.get("https://geocoding-api.open-meteo.com/v1/search", params={"name": city, "count": 1}).json()
-            
-            if "results" in geo:
-                res = geo["results"][0]
-                # Předpověď
-                data = requests.get("https://api.open-meteo.com/v1/forecast", params={"latitude": res["latitude"], "longitude": res["longitude"], "current_weather": True}).json()
-                
-                weather = data["current_weather"]
-                
-                st.metric(res["name"], f"{weather['temperature']} °C")
+            # získání dat
+            weather = get_weather(city)
+
+            if weather:
+                # vykreslení výsledků
+                st.metric(weather['place'], f"{weather['temperature']} °C")
                 st.write(f"Vítr: {weather['windspeed']} km/h")
             else:
                 st.error("Nenalezeno")
@@ -36,4 +40,3 @@ def main():
 if __name__ == '__main__':
     page.render()
     main()
-

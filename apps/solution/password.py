@@ -1,5 +1,5 @@
+import streamlit as st
 from pathlib import Path
-import random, string, streamlit as st
 from utils.page import Page
 
 
@@ -13,15 +13,18 @@ page = Page(
 
 
 def main():
+    from utils.func import generate_password
+
     # nastavení
     length = st.slider("Délka", 8, 32, 16)
-    symbols = string.ascii_letters + string.digits + "!@#$%^&*"
 
     # generování nového hesla
-    password = "".join(random.choice(symbols) for _ in range(length))
+    password = generate_password(length)
 
     # vykreslení
     st.code(password, language='text')
+
+    # při stiskntí zavoláme stránku znovu
     if st.button("Generovat heslo", use_container_width=True):
         st.rerun()
 
