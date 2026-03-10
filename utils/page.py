@@ -2,7 +2,7 @@ import streamlit as st
 
 
 class Page:
-    """ Page helper/wrapper object to reduce code and structure pages """
+    """ Page helper/wrapper object to define a page """
 
     def __init__(self, path, title, icon, desc=''):
         self.path = path

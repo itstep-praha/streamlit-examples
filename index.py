@@ -1,7 +1,7 @@
-from pathlib import Path
 import streamlit as st
-from page import Page
-from pages import currency, password, weather, youtube
+from pathlib import Path
+from utils.page import Page
+from apps import app_list
 
 
 path = str(Path(__file__).relative_to(Path.cwd()))
@@ -16,11 +16,10 @@ page = Page(
 def render_menu():
     cols_per_row = 2
     cols = st.columns(cols_per_row)
-    pages = [currency, password, weather, youtube]
 
-    for index, item in enumerate(pages):
+    for index, app in enumerate(app_list):
         with cols[index % cols_per_row]:
-            item.page.render_container()
+            app.page.render_container()
 
 
 if __name__ == '__main__':

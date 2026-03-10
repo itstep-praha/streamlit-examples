@@ -1,6 +1,6 @@
 # Streamlit Examples
 
-Simple web apps with Streamlit framework. Each example is a Python file in pages folder. Students should implement `main()` function.
+Simple web apps with Streamlit framework. Each example is a Python file in `apps` folder. Students should implement `main()` function.
 
 
 ![Streamlit Examples Screenshot](screen.png)
@@ -38,4 +38,16 @@ pip install -r requirements.txt
 Run server:
 ```
 streamlit run app.py
+```
+
+To run solved mode set `USE_SOLVED` env variable:
+
+Windows PoweShell
+```
+$env:USE_SOLVED=1; streamlit run app.py
+```
+
+MacOS, Linux
+```
+USE_SOLVED=1 streamlit run app.py
 ```

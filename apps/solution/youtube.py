@@ -1,6 +1,6 @@
 from pathlib import Path
 import io, streamlit as st
-from page import Page
+from utils.page import Page
 
 
 path = str(Path(__file__).relative_to(Path.cwd()))

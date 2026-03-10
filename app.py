@@ -1,10 +1,8 @@
 import streamlit as st
 import index
-from pages import currency, password, weather, youtube
+from apps import app_list
 
 
-pages = [index, currency, password, weather, youtube]
-pages = [item.page.get_nav_item() for item in pages]
-
-nav = st.navigation(pages)
+use_apps = (index, *app_list)
+nav = st.navigation([app.page.get_nav_item() for app in use_apps])
 nav.run()
