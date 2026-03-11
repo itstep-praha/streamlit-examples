@@ -19,7 +19,7 @@ def main():
     amount = st.number_input("Částka", value=1.0, min_value=0.0)
     from_currency = st.selectbox("Z měny", ["EUR", "USD", "CZK", "GBP"])
     to_currency = st.selectbox("Do měny", ["CZK", "EUR", "USD", "GBP"])
-    button = st.button("Převést", use_container_width=True)
+    button = st.button("Převést", width='stretch')
     
     if button:
         with st.spinner():

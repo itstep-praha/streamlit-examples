@@ -19,7 +19,7 @@ def main():
     render_url_examples()
 
     url = st.text_input("Youtube URL:", placeholder='Zadejte Youtube video URL')
-    submit = st.button("Zpracovat video", use_container_width=True)
+    submit = st.button("Zpracovat video", width='stretch')
 
     if submit and url:
         try:
@@ -37,7 +37,7 @@ def main():
                 data=buffer,
                 file_name=f"{video.title}.mp4",
                 mime="video/mp4",
-                use_container_width=True
+                width='stretch'
             )
         except Exception as e:
             st.error(f"Chyba: {e}")
@@ -49,7 +49,7 @@ def main():
 def render_video_details(video):
     col1, col2 = st.columns([1, 2])
     with col1:
-        st.image(video.thumbnail_url, use_container_width=True)
+        st.image(video.thumbnail_url, width='stretch')
     with col2:
         st.subheader(video.title, anchor=False)
         st.caption(f"Autor: {video.author} | Délka: {video.length}s")

@@ -21,7 +21,7 @@ class Page:
         """ renders item as container for menu """
         with st.container(border=True):
             st.markdown(f'### {self.icon} {self.title}')
-            if st.button(f'Otevřít {self.title}', key=self.path, use_container_width=True):
+            if st.button(f'Otevřít {self.title}', key=self.path, width='stretch'):
                 st.switch_page(self.path)
 
     def get_nav_item(self):

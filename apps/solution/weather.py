@@ -17,7 +17,7 @@ def main():
 
     # Vstup a tlačítko
     city = st.text_input("Město:", value="Praha")
-    button = st.button("Zjistit", use_container_width=True)
+    button = st.button("Zjistit", width='stretch')
 
     # Kontrola zadání města
     if not city.strip():

@@ -25,7 +25,7 @@ def main():
     st.code(password, language='text')
 
     # při stiskntí zavoláme stránku znovu
-    if st.button("Generovat heslo", use_container_width=True):
+    if st.button("Generovat heslo", width='stretch'):
         st.rerun()
 
 

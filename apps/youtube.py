@@ -20,7 +20,7 @@ def main():
 def render_video_details(video):
     col1, col2 = st.columns([1, 2])
     with col1:
-        st.image(video.thumbnail_url, use_container_width=True)
+        st.image(video.thumbnail_url, width='stretch')
     with col2:
         st.subheader(video.title, anchor=False)
         st.caption(f"Autor: {video.author} | Délka: {video.length}s")
